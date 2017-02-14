@@ -1,0 +1,41 @@
+{
+    "acKind": "ImageManifest",
+    "acVersion": "0.8.10",
+    "name": "coreos/stage1-skim",
+    "labels": [
+        {
+            "name": "version",
+            "value": "0.0.1"
+        },
+        {
+            "name": "arch",
+            "value": "amd64"
+        },
+        {
+            "name": "os",
+            "value": "linux"
+        }
+    ],
+    "annotations": [
+        {
+            "name": "coreos/stage1/run",
+            "value": "/run"
+        },
+        {
+            "name": "coreos/stage1/enter",
+            "value": "/enter"
+        },
+        {
+            "name": "coreos/stage1/gc",
+            "value": "/gc"
+        },
+        {
+            "name": "coreos/stage1/stop",
+            "value": "/stop"
+        },
+        {
+            "name": "coreos/stage1/interface-version",
+            "value": "5"
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+hash: 2318192de0ba9b029e19b73bf8d76132c92c09e5d27fcec9a8e5e2fbf4515203
+updated: 2017-02-14T14:33:57.48709784-08:00
+imports:
+- name: github.com/appc/spec
+  version: ba99d6b8ccbbed2942e53eb5395fddae113cdf8e
+  subpackages:
+  - aci
+  - pkg/device
+  - pkg/tarheader
+  - schema
+  - schema/common
+  - schema/types
+  - schema/types/resource
+- name: github.com/containernetworking/cni
+  version: 5c3c17164270150467498a32c71436c7cd5501be
+  subpackages:
+  - pkg/invoke
+  - pkg/ip
+  - pkg/ipam
+  - pkg/ns
+  - pkg/skel
+  - pkg/testutils
+  - pkg/types
+  - pkg/utils
+  - pkg/utils/hwaddr
+  - pkg/utils/sysctl
+  - plugins/ipam/dhcp
+  - plugins/ipam/host-local
+  - plugins/ipam/host-local/backend
+  - plugins/ipam/host-local/backend/disk
+  - plugins/main/bridge
+  - plugins/main/ipvlan
+  - plugins/main/macvlan
+  - plugins/main/ptp
+  - plugins/meta/flannel
+  - plugins/meta/tuning
+- name: github.com/coreos/go-semver
+  version: 294930c1e79c64e7dbe360054274fdad492c8cf5
+  subpackages:
+  - semver
+- name: github.com/coreos/rkt
+  version: 46b1f742777ddc34a9ab9b4d9c37c45d3396ca37
+  subpackages:
+  - common
+  - pkg/fileutil
+  - pkg/flag
+  - pkg/fs
+  - pkg/group
+  - pkg/log
+  - pkg/mountinfo
+  - pkg/passwd
+  - pkg/sys
+  - pkg/user
+  - stage1/common
+  - stage1/common/types
+- name: github.com/hashicorp/errwrap
+  version: 7554cd9344cec97297fa6649b055a8c98c2a1e55
+- name: github.com/spf13/pflag
+  version: 08b1a584251b5b62f458943640fc8ebd4d50aaa5
+- name: github.com/syndtr/gocapability
+  version: e7cb7fa329f456b3855136a2642b197bad7366ba
+  subpackages:
+  - capability
+- name: go4.org
+  version: 03efcb870d84809319ea509714dd6d19a1498483
+  subpackages:
+  - errorutil
+- name: gopkg.in/inf.v0
+  version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
+testImports: []
