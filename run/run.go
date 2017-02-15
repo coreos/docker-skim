@@ -241,7 +241,7 @@ func stage1(rp *stage1commontypes.RuntimePod) int {
 	}
 
 	diag.Printf("Starting service: %q\n", filepath.Join(execDir, args[0]))
-	if err = syscall.Exec(args[0], args, env); err != nil {
+	if err = syscall.Exec(filepath.Join(execDir, args[0]), args, env); err != nil {
 		log.PrintE("cannot exec", err)
 		return 254
 	}

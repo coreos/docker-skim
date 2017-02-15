@@ -1,7 +1,7 @@
 {
     "acKind": "ImageManifest",
     "acVersion": "0.8.10",
-    "name": "coreos/stage1-skim",
+    "name": "coreos.com/rkt/stage1-skim",
     "labels": [
         {
             "name": "version",
@@ -18,23 +18,23 @@
     ],
     "annotations": [
         {
-            "name": "coreos/stage1/run",
+            "name": "coreos.com/rkt/stage1/run",
             "value": "/run"
         },
         {
-            "name": "coreos/stage1/enter",
+            "name": "coreos.com/rkt/stage1/enter",
             "value": "/enter"
         },
         {
-            "name": "coreos/stage1/gc",
+            "name": "coreos.com/rkt/stage1/gc",
             "value": "/gc"
         },
         {
-            "name": "coreos/stage1/stop",
+            "name": "coreos.com/rkt/stage1/stop",
             "value": "/stop"
         },
         {
-            "name": "coreos/stage1/interface-version",
+            "name": "coreos.com/rkt/stage1/interface-version",
             "value": "5"
         }
     ]
