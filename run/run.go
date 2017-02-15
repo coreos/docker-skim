@@ -24,7 +24,7 @@ import (
 	"strings"
 	"syscall"
 
-    "github.com/appc/spec/schema/types"
+	"github.com/appc/spec/schema/types"
 
 	"github.com/coreos/rkt/common"
 	pkgflag "github.com/coreos/rkt/pkg/flag"
@@ -92,11 +92,11 @@ func parseFlags() *stage1commontypes.RuntimePod {
 func stage1(rp *stage1commontypes.RuntimePod) int {
 	rootDir, _ := os.Getwd()
 
-    uuid, err := types.NewUUID(flag.Arg(0))
-    if err != nil {
-        log.Print("UUID is missing or malformed\n")
-        return 254
-    }
+	uuid, err := types.NewUUID(flag.Arg(0))
+	if err != nil {
+		log.Print("UUID is missing or malformed\n")
+		return 254
+	}
 
 	root := "."
 	p, err := stage1commontypes.LoadPod(root, uuid, rp)
