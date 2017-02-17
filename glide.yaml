@@ -1,0 +1,16 @@
+package: github.com/cab105/stage1-skim
+import:
+- package: github.com/appc/spec
+  version: 0.8.10
+  subpackages:
+  - schema/types
+- package: github.com/coreos/rkt
+  version: 1.24.0
+  subpackages:
+  - common
+  - pkg/flag
+  - pkg/log
+  - pkg/sys
+  - pkg/user
+  - stage1/common
+  - stage1/common/types
