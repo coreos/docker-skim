@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ROOT=$(dirname "${BASH_SOURCE}")/..
+
+if ! type glide &>/dev/null; then
+    1>&2 echo "The 'glide' utility must be installed to update vendored dependencies."
+    exit 1
+fi
+
+source "${ROOT}/scripts/util.sh"
+
+util::symlink_gopath
+
+pushd "${GP_DIR}"
+trap 'popd' EXIT
+
+glide update --skip-test
+
+# appc is expecitly vendored in our glide.yaml, this dodges referencing a type
+# via two different imports.
+rm -f "${GP_DIR}/vendor/github.com/coreos/rkt/vendor/github.com/appc/spec/"

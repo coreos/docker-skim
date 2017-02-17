@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2017 The rkt Authors
+# Copyright 2017 CoreOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,32 +14,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 set -e
 
+ROOT=$(dirname "${BASH_SOURCE}")
+source "${ROOT}/scripts/util.sh"
+
 BINS="enter gc run stop"
-BASEDIR=$PWD
 
-# Verify the core binaries of go and glide exist
-GLIDEBIN=`which glide`
-GOBIN=`which go`
-
-if [ "x$GLIDEBIN" == "x" ]; then
-    echo "Glide needs to be in your path"
-    exit 254
-fi
-
-if [ "x$GOBIN" == "x" ]; then
-    echo "The go binary needs to be in your path"
-    exit 254
-fi
+eval $(go env)
+export GOBIN=${PWD}/bin/${GOARCH}
+export CGO_ENABLED=1
 
 # Clean the repo, but save the vendor area
-if [ "x$1" != "x" ] && [ "clean" == $1 ]; then
+if [ "x$1" != "x" ] && [ "clean" == "$1" ]; then
     echo "cleaning project"
     rm -rf target
     rm -f stage1-skim.aci
     rm -f aci/actool
+    rm -f "${GP_DIR}"
+    rmdir --parents "gopath/src/$ORG_PATH" || true
 
     for i in $BINS; do
         rm -f $i/$i
@@ -48,20 +41,13 @@ if [ "x$1" != "x" ] && [ "clean" == $1 ]; then
     exit 0
 fi
 
-# Ensure the vendor directory exists
-if [ ! -d vendor ]; then
-    $GLIDEBIN install
+util::symlink_gopath
 
-    # Remove the vendor area from github.com/coreos/rkt since this will cause
-    # a cyclic dependency with run/run.go
-    rm -rf vendor/github.com/coreos/rkt/vendor
-fi
+# Build actool
+pushd "$GP_DIR"
+trap 'popd' EXIT
 
-# Build the actool
-pushd vendor/github.com/appc/spec/actool
-$GOBIN build
-mv actool $BASEDIR/aci
-popd
+go build -o ./aci/actool "${REPO_PATH}/vendor/github.com/appc/spec/actool"
 
 # Build up the target directory and the rootfs
 if [ ! -d target ]; then
@@ -72,9 +58,8 @@ if [ ! -d target ]; then
 fi
 
 for i in $BINS; do
-    pushd $i && $GOBIN build
-    cp $i ../target/rootfs
-    popd
+    go build -o ./$i/$i ./$i/
+    cp $i/$i target/rootfs
 done
 
 # Generate the aci image
@@ -84,4 +69,4 @@ if [ -f stage1-skim.aci ]; then
     rm stage1-skim.aci
 fi
 
-aci/actool build target stage1-skim.aci
+./aci/actool build target stage1-skim.aci

@@ -3,8 +3,9 @@ import:
 - package: github.com/appc/spec
   version: 0.8.10
   subpackages:
-  - schema/types
+  - actool
 - package: github.com/coreos/rkt
+  flatten: true
   version: 1.24.0
   subpackages:
   - common

@@ -1,10 +1,10 @@
-hash: 2318192de0ba9b029e19b73bf8d76132c92c09e5d27fcec9a8e5e2fbf4515203
-updated: 2017-02-17T14:21:39.866286418-08:00
+hash: 70267e3b7791e7083058f544fb1baaabe0ca877a0297573b4742e4778ecd827d
+updated: 2017-02-21T14:59:10.738788659-08:00
 imports:
 - name: github.com/appc/spec
   version: ba99d6b8ccbbed2942e53eb5395fddae113cdf8e
   subpackages:
-  - schema/types
+  - actool
 - name: github.com/coreos/rkt
   version: 46b1f742777ddc34a9ab9b4d9c37c45d3396ca37
   subpackages:
