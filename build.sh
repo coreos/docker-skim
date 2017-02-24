@@ -15,6 +15,8 @@
 # limitations under the License.
 
 set -e
+set -o pipefail
+set -o nounset
 
 ROOT=$(dirname "${BASH_SOURCE}")
 source "${ROOT}/scripts/util.sh"
@@ -22,11 +24,11 @@ source "${ROOT}/scripts/util.sh"
 BINS="enter gc run stop"
 
 eval $(go env)
-export GOBIN=${PWD}/bin/${GOARCH}
+export GOBIN="$(pwd)/bin/${GOARCH}"
 export CGO_ENABLED=1
 
 # Clean the repo, but save the vendor area
-if [ "x$1" != "x" ] && [ "clean" == "$1" ]; then
+if [ "x${1:-}" != "x" ] && [ "clean" == "$1" ]; then
     echo "cleaning project"
     rm -rf target
     rm -f stage1-skim.aci

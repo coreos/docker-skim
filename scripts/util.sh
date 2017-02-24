@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROOT=$(dirname "${BASH_SOURCE}")/..
+ROOT="$(readlink -f $(dirname "${BASH_SOURCE}")/..)"
 
 NAME="docker-skim"
 ORG_PATH="github.com/coreos"
