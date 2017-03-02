@@ -210,6 +210,14 @@ func stage1(rp *stage1commontypes.RuntimePod) int {
 	}
 
 	env := []string{}
+
+	if fds := os.Getenv("LISTEN_FDS"); fds != "" {
+		env = append(env, "LISTEN_FDS="+fds)
+	}
+	if pid := os.Getenv("LISTEN_PID"); pid != "" {
+		env = append(env, "LISTEN_PID="+pid)
+	}
+
 	foundPath := false
 	for _, e := range ra.App.Environment {
 		if e.Name == "PATH" {
