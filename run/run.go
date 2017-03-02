@@ -210,6 +210,14 @@ func stage1(rp *stage1commontypes.RuntimePod) int {
 	}
 
 	env := []string{}
+
+	if fds := os.Getenv("LISTEN_FDS"); fds != "" {
+		env = append(env, "LISTEN_FDS="+fds)
+	}
+	if pid := os.Getenv("LISTEN_PID"); pid != "" {
+		env = append(env, "LISTEN_PID="+pid)
+	}
+
 	foundPath := false
 	for _, e := range ra.App.Environment {
 		if e.Name == "PATH" {
@@ -217,6 +225,9 @@ func stage1(rp *stage1commontypes.RuntimePod) int {
 			for _, p := range strings.Split(e.Value, ":") {
 				containerPath += execDir + workDir + p + ":"
 			}
+			// Add the path for both within the container and on the host as a
+			// fallback
+			containerPath += e.Value
 
 			env = append(env, e.Name+"="+containerPath)
 		} else {
