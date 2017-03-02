@@ -217,6 +217,9 @@ func stage1(rp *stage1commontypes.RuntimePod) int {
 			for _, p := range strings.Split(e.Value, ":") {
 				containerPath += execDir + workDir + p + ":"
 			}
+			// Add the path for both within the container and on the host as a
+			// fallback
+			containerPath += e.Value
 
 			env = append(env, e.Name+"="+containerPath)
 		} else {
