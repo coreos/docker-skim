@@ -3,6 +3,13 @@
 A [rkt](https://github.com/coreos/rkt) flavor for running pods natively on a host.  In case you need full access
 to the host, but don't want the application or pod cluttering up your filesystem.
 
+## **WARNING**
+
+This project is **experimental** and **unsupported**. While it generally should
+work, and we generally will accept contributions, it may break at any given
+time.
+
+
 ## Dependencies and Building
 
 You will need Go (at least 1.6 for the versioning), and [Glide](https://github.com/Masterminds/glide)
@@ -32,6 +39,8 @@ Lastly, you will need to pass the following into rkt as the stage1 flavor is not
 
     --insecure-options=image
 
-## Miscellaneous
+Please note, this stage1 should only be used with specially created images that are intended for this stage1. Due to its dependency on the host operating system, it should only be used on Container Linux by CoreOS.
 
-This code is copyright under the Apache-2 license
+## Licensing
+
+This code is available under the Apache-2 license, unless otherwise noted.
