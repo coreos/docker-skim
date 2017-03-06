@@ -7,11 +7,9 @@ to the host, but don't want the application or pod cluttering up your filesystem
 
 You will need Go (at least 1.6 for the versioning), and [Glide](https://github.com/Masterminds/glide)
 
-To obtain and build the stage1 flavor:
+To build the stage1 flavor:
 
 ```
-cd $GOPATH/src/github.com/cab105 && clone https://github.com/cab105/stage1-skim.git
-cd stage1-skim
 ./build.sh
 ```
 
