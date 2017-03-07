@@ -1,7 +1,7 @@
 {
     "acKind": "ImageManifest",
     "acVersion": "0.8.10",
-    "name": "coreos.com/rkt/stage1-skim",
+    "name": "users.developer.core-os.net/skim/stage1-skim",
     "labels": [
         {
             "name": "version",
