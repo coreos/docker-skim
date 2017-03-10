@@ -21,7 +21,7 @@ Requires=docker.socket
 Type=simple
 
 ExecStart=/usr/bin/rkt run --dns=host --interactive \
-  --insecure-options=image \
+  --trust-keys-from-https \
   --stage1-name=users.developer.core-os.net/skim/stage1-skim:0.0.1 \
   users.developer.core-os.net/skim/docker:1.12.6_coreos.0 \
   --exec=/usr/lib/coreos/dockerd -- \
