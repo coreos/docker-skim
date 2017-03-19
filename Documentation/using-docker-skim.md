@@ -40,7 +40,7 @@ Delegate=yes
 WantedBy=multi-user.target
 ```
 
-Afterwards, run `systemctl daemon-reload` and `systemctl start docker` per usual.
+Afterwards, run `systemctl daemon-reload` and `systemctl restart docker` per usual.
 
 ### The docker CLI
 
